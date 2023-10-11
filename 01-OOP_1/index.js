@@ -143,3 +143,48 @@ console.log(newCar2);
 // console.log(CarConstructor("opel","corsa","2020"));
 
 console.log(newCar2.startEngine());
+
+/* -------------------------------------------------------------------------- */
+/*                          GETTERS and SETTERS                               */
+/* -------------------------------------------------------------------------- */
+
+
+class Car1 {
+    constructor(id,name){
+        console.log("Inside Car constructor");
+        this.id=id; 
+        this.name=name;
+        this._place=null;
+    }
+        get place(){
+            console.log("Inside getter function to getvalue");
+            return this._place+ " GETTER FUNCTION";
+        }
+        set place(value){
+            console.log("Inside  setter function to set value");
+            this._place=value;
+        }
+}
+car1.place="Newyork"
+console.log("car1: "+ car1.id,car1.name, car1.place)
+
+### Refer File: src/inheitanceSinglefile.js 
+### INHERITANCE
+"extend" keyword is used to show a class is inherits from a parent class. All class in javascript inherits from "Object Class"
+
+
+<!--  Parent Class -->
+class Vehicle{ 
+}
+ <!-- Truck and Bus Inherits from the Parent class called Vehicle -->
+class Truck extends Vehicle{
+}
+class Bus extends Vehicle{
+}
+<!--  Create an instance of the Truck class -->
+let truck1=new Truck();
+<!-- Every class in javascript inherits from Object class (kind of super parent class) -->
+ <!-- An instance (i.e. truck1) of a class(i.e. Truck) will also be an  instance of parent class(i.e. Vehicle) that it inherits from as well as an instance of Object Class.  -->
+console.log(truck1 instanceof Truck);
+console.log(truck1 instanceof Vehicle);
+console.log(truck1 instanceof  Object);
