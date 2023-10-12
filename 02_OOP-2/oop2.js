@@ -121,3 +121,29 @@ const alien2 = new Alien2("Ali", "I'm Ali the alien!", 10, 50, 10000)
 console.log(alien2);
 alien2.howOld()
 
+/* -------------------------------------------------------------------------- */
+/*                                Polymorphism                                */
+/* -------------------------------------------------------------------------- */
+class Alien3 extends Alien2 {
+    constructor(name, phrase, power, speed) {
+        super(speed)
+        this.name = name
+        this.phrase = phrase
+        this.power = power
+    }
+    sayPhrase = () => console.log(this.phrase)
+    attack = () => console.log(`I'm attacking with a power of ${this.power}!`)
+}
+
+
+class Alien4 extends Alien3 {
+    constructor (name, phrase, power, speed) {
+        super(name, phrase, power, speed)
+        this.species = "alien"
+    }
+    fly = () => console.log("Zzzzzziiiiiinnnnnggggg!!")
+    attack = () => console.log("Now I'm doing a different thing, HA!") // Override the parent method.
+}
+
+const alien3 = new Alien4("Ali", "I'm Ali the alien!", 10, 50)
+alien3.attack() // output: "Now I'm doing a different thing, HA!"
