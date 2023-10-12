@@ -1,0 +1,12 @@
+{
+  "name": "02_oop-2",
+  "version": "1.0.0",
+  "description": "OOP2",
+  "main": "oop2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
