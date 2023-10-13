@@ -9,10 +9,12 @@
 class Vehicle{
     //publicProperty
     brand='no brand'
+
     //protected Property 
     // normalde sadece bulunduğu class ve inherit edildiği class da geçerli
     // ama js de değil. sadece bu değişkene dokunmasanız iyi olur demek
     _model='no model'
+
     //private poperty
     #owner='clarusway'
     getBrand(){
@@ -30,7 +32,7 @@ class Vehicle{
 }
 const vehicle1=new Vehicle()
 console.log(vehicle1.brand)
-console.log(vehicle1._model) 
+console.log(vehicle1.owner) 
 
 // console.log(vehicle1.#ovner) // private olduğu için çalşmaz
 
