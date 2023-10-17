@@ -108,3 +108,32 @@ SELECT count(BillingAddress) from invoices; -- Toplam satir sayisi
 SELECT count(BillingState) from invoices; -- Null degerler varsa o sütun icinde, count o satirlari saymaz
 SELECT avg(total) from invoices;
 SELECT round(avg(total),3) from invoices  -- round ..,5 yukariya yuvarlama, ..,4 asagiya yuvarlama
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 
+-- GROUP BY / Gruplama
+SELECT BillingCountry,sum(total) as Ulke_Icin_Fatura_Toplami from invoices group by BillingCountry; -- Herbir bestecinin toplam parca sayisi
+
+SELECT name,count(name) as toplamBesteciSayisi from tracks group by Composer;
+
+-- where and groupby  -- ilk once where, sonra gruplama calisti
+
+SELECT * FROM tracks where Milliseconds;
+
+SELECT BillingCity, sum(total) FROM invoices WHERE BillingCountry="Germany" group by BillingCity; -- Almanya da herbir sehir icin kesilen toplam fatura
+
+-- HAVING >> WHERE gibi sart kosulu olusturma Ama where ile gruplamadan once
+
+SELECT * from invoices where total > 10;
+SELECT BillingCity, count(*) FROM invoices group by BillingCity HAVING sum(total)>50;
+-- 3 den fazla müsteriye sahip sehirler
+SELECT Country FROM customers group by Country HAVING count(FirstName) > 3; 
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
