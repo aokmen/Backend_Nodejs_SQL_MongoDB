@@ -88,3 +88,23 @@ SELECT * FROM artists WHERE Name like "%zep%"; -- icinde zep olan
 select * from artists where name like "_ccept"; -- tek karakter eksik _ ile baslayan 
 select * from artists where name like "Ac_ept";
 select * from artists where name like "Ac_e%";
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ -- SELECT Aggregate_functions(column_name) from tablename
+-- Bu fonksiyonlar tek bir deger döndürür
+-- SUM, AVG, MIN, MAX, COUNT
+
+SELECT total FROM invoices;
+SELECT SUM(total) FROM invoices;
+SELECT SUM(total), BillingCity FROM invoices; -- bu sekilde mantiksiz, en üsteki sehir ismini getirdi
+SELECT SUM(total) as Toplam_Fatura_Tutari FROM invoices;
+SELECT name as artistName from artists; -- as ile tablo ismini kendimiz verebiliyoruz
+SELECT min(total) from invoices;
+SELECT SUM(total) as toplamFatura, MIN(total) as enDüsükFatura, MAX(total) as enYüksekFatura, AVG(total) as ortalamaFatura from invoices;
+SELECT count(BillingAddress) from invoices; -- Toplam satir sayisi
+SELECT count(BillingState) from invoices; -- Null degerler varsa o sütun icinde, count o satirlari saymaz
+SELECT avg(total) from invoices;
+SELECT round(avg(total),3) from invoices  -- round ..,5 yukariya yuvarlama, ..,4 asagiya yuvarlama
