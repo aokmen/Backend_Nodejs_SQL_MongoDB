@@ -135,5 +135,29 @@ SELECT Country FROM customers group by Country HAVING count(FirstName) > 3;
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- Subquery -- Ic ice tablo erisimi
 
+-- en yüksek faura keslien müsterinin bilgisi
+
+SELECT CustomerId, max(total) from invoices;
+SELECT CustomerId from invoices order by total desc limit 1;
+
+SELECT * from customers where CustomerId=(SELECT CustomerId from invoices order by total desc limit 1);
+
+-- customer icinde roberto ile ayni ülkeden olan müsteriler
+SELECT Country FROM customers WHERE FirstName="Roberto";
+
+SELECT * FROM customers WHERE Country IN (SELECT Country FROM customers WHERE FirstName="Mark");
+
+-- tracks icinde kac tane sarki pop müzik türünde
+
+SELECT GenreId from genres where name="Pop";
+
+SELECT count(*) from tracks where GenreId=(SELECT GenreId  from genres where name="Pop");
+
+ -- pop müzigindeki parcalarin albüm isimleri
+
+SELECT DISTINCT(AlbumId) from tracks where GenreId=(SELECT GenreId  from genres where name="Pop");
+
+SELECT * from albums where AlbumId IN (SELECT DISTINCT(AlbumId) from tracks where GenreId=(SELECT GenreId  from genres where name="Pop"));
 
