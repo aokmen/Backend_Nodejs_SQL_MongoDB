@@ -161,3 +161,43 @@ SELECT DISTINCT(AlbumId) from tracks where GenreId=(SELECT GenreId  from genres 
 
 SELECT * from albums where AlbumId IN (SELECT DISTINCT(AlbumId) from tracks where GenreId=(SELECT GenreId  from genres where name="Pop"));
 
+-------------------------------------------------------------------------------------------------------------------------------------
+
+-- INNER JOIN
+
+SELECT * FROM albums JOIN artists on albums.ArtistId = artists.ArtistId;
+SELECT * FROM artists JOIN albums on albums.ArtistId = artists.ArtistId;
+
+-- Fatura kime kesildi
+SELECT customers.FirstName, invoices.total from invoices join customers on invoices.CustomerId=customers.CustomerId;
+
+--her parcanintürünü getir
+SELECT tracks.Name,genres.Name from tracks join genres on tracks.GenreId = genres.GenreId;
+
+-- playlist tablosuna dahil edilmis parcalar hangi playlistte
+
+SELECT *from playlist_track join playlists on playlists.PlaylistId = playlist_track.PlaylistId;
+
+--playlist_tracktaki parcalarin isimleri
+
+SELECT playlist_track.PlaylistId, tracks.name from playlist_track join tracks on tracks.TrackId = playlist_track.TrackId;
+
+--playlist_tracktaki hem playlist hem de parca isimlerini getir
+
+SELECT tracks.Name, playlists.name from playlist_track
+join playlists on playlist_track.PlaylistId = playlists.PlaylistId 
+JOIN tracks on playlist_track.TrackId=tracks.TrackId;
+
+--her bir parcanin album isimini ve tür ismini getirin
+SELECT tracks.Name as Parca_Ismi, albums.Title, genres.Name as Tür_Adi from tracks 
+join albums on tracks.AlbumId = albums.AlbumId 
+JOIN genres on tracks.GenreId=genres.GenreId 
+join media_types on tracks.MediaTypeId=media_types.MediaTypeId;
+
+--LEFT JOIN
+
+select customers.FirstName,customers.LastName, invoices.InvoiceId from customers LEFT JOIN invoices on customers.CustomerId = invoices.CustomerId;
+
+--20 den büyük faturalarin müsteri isimleri
+
+SELECT customers.FirstName, invoices.InvoiceId, invoices.total FROM invoices JOIN customers on invoices.CustomerId = customers.CustomerId where total > 20;
