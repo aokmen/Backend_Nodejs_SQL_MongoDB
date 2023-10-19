@@ -218,3 +218,161 @@ UPDATE employees SET Address="Karl Marks Strasse"  where FirstName="Andrew" ; --
 --DELETE / Silme
 
 DELETE from genres where GenreId=31;
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Examples                                  */
+/* -------------------------------------------------------------------------- */
+1. Write a query that returns the track name and its composer from the "Tracks" table.
+
+2. Write a query that returns all columns from the "Tracks" table.
+
+3. Write a query that returns the unique name of composers for each track.
+
+4. Write a query that returns the unique AlbumId and MediaTypeId from the "Tracks" table.
+
+5. Write a query that returns the track name and track ID of 'Jorge Ben'.
+
+6. Write a query that returns all information of the invoices with a total amount greater than $25.
+
+7. Write a query that returns all information of the invoices with a total amount less than $15, limiting the result to 5 rows.
+
+8. Write a query that returns all information of the invoices with a total amount greater than $10, sorts the total amounts in descending order, and displays only the top 2 rows.
+
+9. Write a query that returns all information of the invoices where the billing country is not Canada, sorts the total amounts in ascending order, and displays the top 10 rows.
+
+10. Write a query that returns the InvoiceId, CustomerId, and total dollar amount for each invoice, sorting them first by CustomerId in ascending order and then by total dollar amount in descending order.
+
+11. Write a query that returns track names that start with 'B' and end with 'S'.
+
+12. Write a query that returns the newest date among the invoice dates between 2008 and 2011.
+
+13. Write a query that returns the first and last names of customers who have orders from Norway and Belgium.
+
+14. Write a query that returns the track names composed by 'Zappa'.
+
+15. (a) How many tracks are there in the digital music store? Display the count separately.
+    (b) How many invoices are there in the digital music store? Display the count separately.
+
+16. How many composers are there in the digital music store?
+
+17. How many tracks does each album have? Display the AlbumId and the number of tracks sorted from highest to lowest.
+
+18. Write a query that returns the track name with the minimum and maximum duration, displaying them separately.
+
+19. Write a query that returns the tracks with a duration less than the average duration.
+
+20. Write a query that returns the total number of tracks for each composer.
+
+21. Write a query that returns the genre of each track.
+
+22. Write a query that returns the artist's album information.
+
+23. Write a query that returns the minimum duration track in each album, displaying the AlbumId, album title, and duration of the track, and sorting them from highest to lowest.
+
+24. Write a query that returns albums with a total duration higher than 60 minutes, displaying the album title and their durations, and sorting the result from highest to lowest.
+
+25. Write a query that returns the TrackId, Track Name, and AlbumId information for the albums titled 'Prenda Minha,' 'Heart of the Night,' and 'Out Of Exile.'
+
+
+--1
+SELECT Name, Composer from tracks;
+
+--2
+SELECT * FROM tracks;
+
+--3
+SELECT Composer FROM tracks GROUP BY Composer;
+SELECT DISTINCT Composer FROM tracks order by Composer;
+
+--4
+SELECT  AlbumId, MediaTypeId from tracks GROUP By AlbumId;
+SELECT DISTINCT AlbumId, MediaTypeId from tracks;
+
+--5
+SELECT name, TrackId from tracks where Composer="Jorge Ben";
+
+--6
+SELECT * from invoices where total > 25;
+
+--7
+SELECT * from invoices where total < 15 limit 5;
+
+--8
+SELECT * from invoices where total > 10 order by total desc limit 2;
+
+--9
+SELECT * from invoices where NOT BillingCountry = "Canada";
+
+--10
+SELECT InvoiceId,CustomerId,total from invoices  order by CustomerId DESC, Total DESC;
+
+--11
+SELECT name from tracks where name like "B%S";
+
+--12
+SELECT MAX(InvoiceDate) from invoices  WHERE InvoiceDate BETWEEN "2009%" And "2011%" ;
+
+--13
+SELECT FirstName,LastName from customers GROUP BY Country HAVING Country = "Norway" OR Country = "Belgium";
+
+--14
+SELECT name as TrackName from tracks where Composer like "%zappa%" ;
+
+--15
+SELECT count(*) from tracks;
+SELECT count(*) from invoices;
+
+--16
+SELECT count( DISTINCT Composer) FROM tracks;
+
+--17
+SELECT  AlbumId,count(*) from tracks GROUP BY AlbumId ORDER BY count(*) DESC;
+
+SELECT AlbumId, COUNT(TrackId) AS NumberOfTracks
+FROM Tracks
+GROUP BY AlbumId
+ORDER BY NumberOfTracks DESC;
+
+--18
+SELECT name, MAX(Milliseconds) from tracks;
+SELECT name, MIN(Milliseconds) from tracks;
+
+--19
+SELECT AVG(Milliseconds) from tracks;
+SELECT * from tracks where Milliseconds < (SELECT AVG(Milliseconds) from tracks);
+
+--20
+SELECT name,Composer,sum( UnitPrice) from tracks where NOT Composer = "Null" GROUP BY Composer;
+
+--21
+SELECT Tracks.TrackId, Tracks.Name AS TrackName, Genres.Name AS Genre
+FROM Tracks
+JOIN Genres ON Tracks.GenreId = Genres.GenreId;
+
+--22
+SELECT Artists.Name AS ArtistName, Albums.Title AS AlbumTitle
+FROM Artists
+JOIN Albums ON Artists.ArtistId = Albums.ArtistId;
+
+--23
+SELECT Albums.AlbumId, Albums.Title AS AlbumTitle, MIN(Tracks.Milliseconds) AS MinimumDuration
+FROM Albums
+JOIN Tracks ON Albums.AlbumId = Tracks.AlbumId
+GROUP BY Albums.AlbumId, AlbumTitle
+ORDER BY MinimumDuration DESC;
+
+--24
+SELECT Albums.Title AS AlbumTitle, 
+       SUM(Tracks.Milliseconds) / 60000 AS AlbumDurationInMinutes
+FROM Albums
+JOIN Tracks ON Albums.AlbumId = Tracks.AlbumId
+GROUP BY Albums.Title
+HAVING AlbumDurationInMinutes > 60
+ORDER BY AlbumDurationInMinutes DESC;
+
+--25
+SELECT Tracks.TrackId, Tracks.Name AS TrackName, Tracks.AlbumId
+FROM Tracks
+JOIN Albums ON Tracks.AlbumId = Albums.AlbumId
+WHERE Albums.Title IN ('Prenda Minha', 'Heart of the Night', 'Out Of Exile');
