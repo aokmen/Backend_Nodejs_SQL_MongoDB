@@ -201,3 +201,20 @@ select customers.FirstName,customers.LastName, invoices.InvoiceId from customers
 --20 den büyük faturalarin müsteri isimleri
 
 SELECT customers.FirstName, invoices.InvoiceId, invoices.total FROM invoices JOIN customers on invoices.CustomerId = customers.CustomerId where total > 20;
+
+
+-- INSERT / KAYIT EKLEME
+
+INSERT INTO genres (GenreId,Name) VALUES (27, "Turk POP");
+INSERT INTO genres VALUES (29, "Turk Sanat");
+INSERT INTO genres VALUES (30, "Germen Volk"),(31, "Germen Pop");
+
+-- UPDATE / güncelleme
+
+UPDATE genres SET Name = "Turk Halk" WHERE GenreId = 28;
+UPDATE genres SET Name = "Arabesk" WHERE GenreId = 29;
+UPDATE employees SET Address="Karl Marks Strasse"  where FirstName="Andrew" ; -- Where kismi yazilmazsa tüm satiri ayni deger atiyor
+
+--DELETE / Silme
+
+DELETE from genres where GenreId=31;
