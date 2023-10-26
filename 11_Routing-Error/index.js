@@ -18,6 +18,8 @@ const PORT=process.env.PORT || 8000
 // router.get('/about',(req,res)=>{res.send({ message:'About page' })})
 // router.get('/user/:userID',(req,res)=>{res.send({ message:'User page' })})
 
+// const router = require('./routes/routesuser')
+
 app.use('/user',require('./routes/routesuser'))
 
 app.listen(PORT,() => console.log('server running http://127.0.0.1:'+PORT))
