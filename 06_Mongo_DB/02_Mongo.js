@@ -1,82 +1,5 @@
 
-/* - 1. Kaç tür SQL dili vardır ve hangisi hangi tür komutları çalıştırmak içindir? - */
 
-
-// SQL Yapılandırılmış Sorgu Dili "Structured Query Language", farklı komutları çalıştırmak için başta olmak üzere çeşitli tiplerde gelir:
-// Veri Sorgu Dili "Data Query Language" (DQL): Veritabanlarından veri sorgulamak için kullanılır. DQL'deki ana komut SELECT'tir.
-// Veri Tanımlama Dili "Data Definition Language" (DDL): Veritabanı yapılarını tanımlamak ve yönetmek için kullanılır. CREATE, ALTER ve DROP gibi komutlar DDL'ye dahildir.
-// Veri İşleme Dili "Data Manipulation Language" (DML): Veritabanındaki verileri yönetmek için kullanılır. INSERT, UPDATE ve DELETE gibi komutlar DML'nin bir parçasıdır.
-// Veri Kontrol Dili "Data Control Language" (DCL): Veritabanında erişimi ve izinleri kontrol etmek için kullanılır. GRANT ve REVOKE gibi komutlar DCL'nin bir parçasıdır.
-
-
-/* ----------------------- 2. NOSQL'in açılımı nedir? ----------------------- */
-
-
-// NoSQL, "Sadece SQL Değil" anlamına gelir. Bu, geleneksel ilişkisel veritabanı yönetim sistemine (RDBMS) dayanmayan bir veritabanı yönetim sistemlerinin türüdür. NoSQL veritabanları, yapısal olmayan veya yarı yapısal verileri işlemek üzere tasarlanmıştır ve çeşitli veri depolama ve alım ihtiyaçları için uygundur.
-
-
-/* ----- 3. Express.js neden mongoDB kullanıyor, nedenleri ne olabilir? ----- */
-
-
-// Express.js, popüler bir Node.js web uygulama çerçevesi, çeşitli nedenlerle MongoDB'i kullanır:
-
-// JSON Uyumluluğu: MongoDB'in belge odaklı doğası ve BSON (Binary JSON) desteği, JavaScript ve Express.js ile doğal bir uyum içindedir, çünkü bu teknolojiler JSON verileriyle iyi çalışırlar.
-
-// Ölçeklenebilirlik: MongoDB, artan veri yüklerini ve trafiği işlemek için yatay olarak kolayca ölçeklenebilen bir NoSQL veritabanıdır, bu da Express.js ile oluşturulan web uygulamaları için uygundur.
-
-// Esneklik: MongoDB'in şema eksikliği, geliştiricilere uygulamanın evrildikçe veri yapısını kolayca adapte etmelerine olanak tanır, bu da hızlı geliştirme döngüsüne sahip web uygulamalarında faydalıdır.
-
-// Hız: MongoDB, yüksek okuma ve yazma performansıyla bilinir, bu da verilerin hızlı bir şekilde alınmasının ve depolanmasının önemli olduğu web uygulamaları için önemlidir.
-
-// Topluluk ve Ekosistem: MongoDB, güçlü bir topluluğa ve araçlarla kütüphanelerin zengin bir ekosistemine sahiptir, bu da Express.js kullanan web geliştiricileri için popüler bir tercih haline getirir.
-
-
-
-/* -------- 5. MVC yapısını aşağıdaki hikayeyle eşleştirebilir misiniz? -------- */
-
-
-// Hangisi denetleyici, hangisi model, hangisi görünüm?
-// Bir restorana gittiğinizi varsayalım. Her ne kadar bunu yapabiliyor olsanız bile, mutfakta yemek pişirmeyeceksiniz.
-// Ev. Bunun yerine işletmeyi ziyaret edip garsonun gelmesini beklersiniz.
-// Garson şimdi yanınıza yaklaşıyor ve siz de akşam yemeği siparişinizi veriyorsunuz. Sunucu yalnızca şunu yazdı:
-// yemek siparişinizin ayrıntıları; sizin kim olduğunuzun ve ne arzuladığınızın farkında değil.
-// Garson daha sonra mutfağa doğru ilerliyor. Sunucu yemeğinizi mutfakta hazırlamıyor.
-// Yemeğiniz aşçı tarafından hazırlanır. Siparişiniz ve masa numaranız garsona verilmektedir.
-// Yemek yap, sonra senin için yemek hazırla. Yemek kendisi tarafından malzemeler kullanılarak hazırlanır. diyelim ki sen
-// sebzeli sandviç seçeneğini seçin. Daha sonra ekmeği, domatesi, patatesi almak için buzdolabını kullanıyor.
-// ihtiyacı olan kırmızı biber, soğan, biraz ve peynir.
-// Şef, yemeğin son parçasını garsona verir. Bu yemeği mutfağın dışına taşımak artık garsonun işi
-// sorumluluk.
-// Sunucu artık sipariş ettiğiniz yiyeceklerin ve bunların nasıl servis edileceğinin farkındadır.
-
-// Model: Hikayede "aşçı," Model'i temsil eder. Aşçı, yemeği hazırlamaktan sorumludur, bu da bir uygulamadaki veri ve iş mantığına karşılık gelir. Model, veri depolama, alımı ve işlemeyi ele alır.
-
-// View: "Garson," Görünüm ile ilişkilendirilebilir. Garson, müşteriden siparişi alır, aracı rol oynar ve yemeği müşteriye servis eder. Benzer şekilde, MVC mimarisinde Görünüm, veriyi kullanıcıya sunma ve kullanıcı etkileşimlerini ele alma sorumluluğundadır.
-
-// Controller: Bu benzetimde "müşteri," Denetleyici'yi temsil edebilir. Müşteri, siparişi vererek etkileşimi başlatır, bu da kullanıcı girişi ve eylemlerle uyumlu bir rol oynar. Müşteri yemeği doğrudan hazırlamaz (aşçı gibi) veya servis etmez (garson gibi) ancak neler olacağını belirlemede rol oynar ve etkileşimin akışını kontrol eder.
-
-// Bu nedenle, MVC yapısında:
-
-// Model (Aşçı), veri ve iş mantığını yönetir.
-// View (Garson), veriyi kullanıcıya sunar ve kullanıcı etkileşimlerini ele alır.
-// Controller (Müşteri), eylemleri başlatır ve etkileşimin akışını kontrol eder.
-
-
- /* ---------- 4. Aşağıdaki tablolardaki verileri MongoDb'de olustur --------- */
-
-// Table name "post"
-
-// post_id    title
-// 1          amazing duo Express.js and MongoDb
-// 2          MVC architecture
-
-// Table name "comment"
-
-// comment_id post_id author content
-// 1 1 Qadir I agree with you
-// 2 1 Victor Their communities are very good
-// 3 2 Rafe Django use MVT
-// 4 1 Cedric Good post
 
 
 
@@ -128,7 +51,7 @@ db.people.insertMany([
     { "id": 4, "user_id": "user4", "age": 40, "status": "C" },
     { "id": 5, "user_id": "user5", "age": 45, "status": "A" }
   ])
-  db.people.insertMany([{ "id": 1, "user_id": "user1", "age": 25, "status": "A" },{ "id": 2, "user_id": "user2", "age": 30, "status": "B" },{ "id": 3, "user_id": "user3", "age": 35, "status": "A" },{ "id": 4, "user_id": "user4", "age": 40, "status": "C" },{ "id": 5, "user_id": "user5", "age": 45, "status": "A" }])
+  db.st.insertMany([{ "id": 1, "user_id": "user1", "age": 25, "status": "A" },{ "id": 2, "user_id": "user2", "age": 30, "status": "B" },{ "id": 3, "user_id": "user3", "age": 35, "status": "A" },{ "id": 4, "user_id": "user4", "age": 40, "status": "C" },{ "id": 5, "user_id": "user5", "age": 45, "status": "A" }])
 
 
 /* -------------------------------------------------------------------------- */
@@ -139,11 +62,11 @@ db.people.find({})
 
 
 /* -------------------------------------------------------------------------- */
-/*      2. MongoDB equivalent of SELECT id, user_id, status FROM people:      */
+/*      2. MongoDB equivalent of SELECT user_id, status FROM people:      */
 /* -------------------------------------------------------------------------- */
  
 db.people.find({}, { "id": 1, "user_id": 1, "status": 1, "_id": 0 })
-
+db.people.find({}, { "user_id": 1, "status": 1, "_id": 0 })
 
 /* -------------------------------------------------------------------------- */
 /*         3.MongoDB equivalent of SELECT user_id, status FROM people:        */
@@ -203,8 +126,10 @@ db.people.find({ "age": { $gt: 25, $lte: 50 } })
 /* -------------------------------------------------------------------------- */
 /*   12.MDB eq of S * FR people WHERE user_id like "%bc%" (reg. expression)   */
 /* -------------------------------------------------------------------------- */
- 
+
+db.people.find( { user_id: /bc/ } ) 
 db.people.find({ "user_id": /.*bc.*/ })
+db.people.find( { user_id: { $regex: /^bc/ } } )
 
 /* -------------------------------------------------------------------------- */
 /*     13.MDB eq of S * FR people WHERE status = "A" ORDER BY user_id ASC:    */
@@ -223,18 +148,20 @@ db.people.find({ "status": "A" }).sort({ "user_id": -1 })
 /* -------------------------------------------------------------------------- */
  
 db.people.countDocuments({})
+db.people.count()
+db.people.find().count()
 
 /* -------------------------------------------------------------------------- */
 /*         16.MongoDB equivalent of SELECT COUNT(user_id) FROM people:        */
 /* -------------------------------------------------------------------------- */
  
-db.people.countDocuments({ "user_id": { $exists: true } })
+db.people.count({ "user_id": { $exists: true } })
 
 /* -------------------------------------------------------------------------- */
 /*    17.MongoDB equivalent of SELECT COUNT(*) FROM people WHERE age > 30:    */
 /* -------------------------------------------------------------------------- */
  
-db.people.countDocuments({ "age": { $gt: 30 } })
+db.people.count({ "age": { $gt: 30 } })
 
 /* -------------------------------------------------------------------------- */
 /*        18.MongoDB equivalent of SELECT DISTINCT(status) FROM people:       */
@@ -247,6 +174,7 @@ db.people.distinct("status")
 /* -------------------------------------------------------------------------- */
  
 db.people.find({}).limit(1)
+db.people.findOne()
 
 /* -------------------------------------------------------------------------- */
 /*       20.MongoDB equivalent of SELECT * FROM people LIMIT 5 SKIP 10:       */
@@ -263,18 +191,18 @@ db.people.find({}).skip(10).limit(5)
 //   user_id Varchar(30),
 //   age Number,
 //   status char(1),
-//   P 
+//   PRIMARY KEY (id)
+//   ) 
 
 
 db.createCollection("people")
 db.people.createIndex({ "id": 1 }, { unique: true })
-
 db.people.insertOne({
    "user_id": "YourUserID",
    "age": 30,
    "status": "A"
 })
-
+db.people.insertOne({"user_id": "YourUserID","age": 30,"status": "A"})
 
 
 // { id: 1, user_id: 'user1', age: 25, status: 'A' },
