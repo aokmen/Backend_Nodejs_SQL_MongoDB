@@ -19,13 +19,13 @@ router.get('/',async (req,res)=>{
 
 router.post('/api',async (req,res)=>{
 
-    // const data = await Todo.create({
-    //     title:'test 1',
-    //     description : "test description",
-    //     priority:2
-    // })
+     const data = await Todo.create({
+         title:'test 1',
+        description : "test description",
+        priority:2
+     })
 
-    const data = await Todo.create(req.body)
+    // const data = await Todo.create(req.body)
        
     res.send(
         {   result:data,
