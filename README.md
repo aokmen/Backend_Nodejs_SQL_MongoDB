@@ -1,2 +1,3 @@
-# Backend_Nodejs_SQL_MongoDB
-db.createCollection("")
+## BlogApi Project
+
+* npm init -y
