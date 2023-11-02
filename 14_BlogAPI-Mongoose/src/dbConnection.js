@@ -1,11 +1,13 @@
-/* -------------------------------------------------------------------------- */
-/*                     BlogApi MongoDB Database Connection                    */
-/* -------------------------------------------------------------------------- */
+/*  BLOG API MONGODB DATABASE CONNECTION */
 
-const mongoose = require('mongoose')
+'use strict'
 
-// mongoose.connect('mongodb://127.0.0.1:27017/blogApi')
-// const mongoDB = process.env.MONGODB
+const mongoose=require('mongoose')
+
+// mongoose.connect('mongodb://127.0.0.1/27017/blogAPI')
 mongoose.connect(process.env.MONGODB)
-    .then(() => console.log('DB connected'))
-    .catch((err) => console.log('DB not connected',err))
+    .then(()=>console.log('DB connected'))
+    .catch((err)=>console.log('DB NOTconnected',err))
+
+
+

@@ -1,25 +1,22 @@
- /* -------------------------------------------------------------------------- */
- /*                         BlogApi Project Index File                         */
- /* -------------------------------------------------------------------------- */
+/*      BLOGAPI PROPJECT index file     */
 
- 'use strict'
+'use strict'
+const express=require('express')
+const app=express()
 
- const express = require ('express')
- const app = express()
- require('dotenv').config()
- const PORT = process.env.PORT || 8000
+require('dotenv').config()
+const PORT=process.env.PORT || 8000
 
- // DB connection
- require('./src/dbConnection')
+//? DB conneciton 
+require('./src/dbConnection')
 
-// errorHandler
-app.use(require('./src/errorHandler'))
-
-// router
-app.use('/',require('./src/routes/blogRoutes'))
-
-// Json formati
 app.use(express.json())
 
+app.use('/',require('./src/routes/blogRoutes'))
+app.use('/user',require('./src/routes/userRoutes'))
 
- app.listen(8000,() => console.log('server is running on http://127.0.0.1:' + PORT))
+
+//?errorHandler
+app.use(require('./src/errorHandler'))
+
+app.listen(PORT, ()=> console.log('server is runnin on http://127.0.0.1:'+PORT))

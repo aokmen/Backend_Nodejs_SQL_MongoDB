@@ -1,17 +1,15 @@
-/* -------------------------------------------------------------------------- */
-/*                            BlogApi Error Handler                           */
-/* -------------------------------------------------------------------------- */
+/*      BLOGAPI ERROR HANDLER       */
 
 'use strict'
 
-module.exports = (err,req,res,next) => {
+module.exports=(err,req,res,next)=>{
 
-    // errorStatusCode = res.errorStatusCode
-
-    res.status(res.errorStatusCode).send({
+    const errorStatusCode=res?.errorStatusCode ?? 500
+    res.status(errorStatusCode).send({
         error:true,
-        message: err.message,
+        message:err.message,
         cause: err.cause,
-        body: req.body
+        body:req.body
     })
 }
+
