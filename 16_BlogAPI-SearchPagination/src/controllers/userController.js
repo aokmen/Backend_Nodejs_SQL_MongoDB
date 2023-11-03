@@ -61,6 +61,60 @@ module.exports.User={
         })
         // res.sendStatus((data.deletedCount>=1)? 202:404)
     
-    }
+    },
+    
+    
+    //  LOGIN LOGOUT
+    login: async(req,res)=>{
+        
+        const {email, password}=req.body
+        // console.log('**********');            
+        // console.log(req.body);
+    
+
+        if(email && password){
+            //const user = await User.findOne({email: email, password: paswordEncrypte(password)})
+            const user = await User.findOne({email: email, password: password})
+            
+            if(user){
+                
+                req.session={
+                    user:{
+                        email: user.email,
+                        password: user.password
+                    }
+                }
+                // milisaniye
+                if(req.body.rememberMe){
+                    req.sessionOptions.maxAge=1000 * 60 *60 * 24
+                }
+                    
+
+                console.log('**********');            
+                console.log(req.session);
+
+                res.status(200).send({
+                    error: false,
+                    result: user,
+                    userlogin: 'ok'
+                    
+                })
+            }
+            else{
+                res.errorStatusCode=401
+                throw new Error(' user not found')
+            }
+
+
+        }
+        else{
+            res.errorStatusCode=400
+            throw new Error(' email and password required fields')
+        }
+
+
+        
+    },
+
 }
 

@@ -6,6 +6,8 @@ const router=require('express').Router()
 const {User}=require('../controllers/userController')
 
 
+router.post('/login',User.login)
+
 router.route('/')
     .get(User.list)
     .post(User.create)
