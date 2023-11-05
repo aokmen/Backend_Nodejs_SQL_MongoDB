@@ -68,8 +68,8 @@ module.exports.User={
     login: async(req,res)=>{
         
         const {email, password}=req.body
-        // console.log('**********');            
-        // console.log(req.body);
+         console.log('**********');            
+         console.log(req.body);
     
 
         if(email && password){
