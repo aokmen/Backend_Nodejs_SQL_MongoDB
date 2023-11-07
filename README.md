@@ -12,11 +12,17 @@ I seamlessly integrate Node.js and Express.js with databases like SQL and MongoD
 
 The primary objective of my project is to provide a robust solution for data management and business logic, catering to both developers and end-users. Leveraging the fast performance of Node.js and Express.js, combined with the data storage flexibility of SQL and MongoDB, results in a versatile architecture. The project has been designed with a strong focus on security and scalability considerations.
 
-### Get Started
+### Backend Tools:
 
-If you're a developer looking to expand your knowledge of working with Node.js, Express.js, SQL, and MongoDB, my project can serve as an instructive resource. It also offers valuable insights for those seeking to enhance their expertise in route management and handling HTTP requests using Express.js.
+* Nodejs
+* Express
+* SQLite
+* Mongodb
+* Mongoose
+* MySQL
+* Postman
 
-Feel free to explore my project's source code to learn more and reach out if you have any questions. Thank you for your interest!
+
 
 
 
