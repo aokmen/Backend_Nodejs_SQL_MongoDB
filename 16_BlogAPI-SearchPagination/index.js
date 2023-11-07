@@ -11,6 +11,9 @@ const PORT=process.env.PORT || 8000
 require('./src/dbConnection')
 
 app.use(express.json())
+/* -------------------- Search - Sort - Page - Middleware -------------------- */
+
+app.use(require('./src/middlewares/searchSortPage'))
 
 // session and cookies
 // npm i cookie-session
@@ -26,7 +29,7 @@ app.use('/',require('./src/routes/blogRoutes'))
 app.use('/user',require('./src/routes/userRoutes'))
 
 // sync data
-require('./src/helpers/sync')()
+//require('./src/helpers/sync')()
 
 //?errorHandler
 app.use(require('./src/errorHandler'))
