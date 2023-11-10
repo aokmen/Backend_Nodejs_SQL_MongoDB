@@ -10,7 +10,8 @@ module.exports = (req,res,next) => {
     const auth = req.headers?.authorization || null
 
     // req.isLogin = false
-    const accessToken=auth?.split('')[1]
+    const accessToken=auth?.split(' ')[1]
+    req.isLogin=false
     // console.log(accessToken);
     jwt.verify(accessToken,process.env.ACCESS_KEY,function(err,user){
         if(err){
@@ -18,7 +19,7 @@ module.exports = (req,res,next) => {
 
         }else{
             req.isLogin = true
-            req.user =user
+            req.user = user
             console.log('jwt accesskey YES ')
 
         }

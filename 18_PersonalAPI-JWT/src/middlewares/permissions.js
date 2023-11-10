@@ -11,8 +11,10 @@ module.exports = {
             throw new Error('You must login')
         }
     },
+
     isAdmin:(req,res,next)=>{
-        if(req.user && req.isAdmin){
+        console.log(req.user.isAdmin);
+        if(req.user && req.user.isAdmin){
             next()
         }else{
             res.errorStatusCode=403
@@ -20,7 +22,7 @@ module.exports = {
         }
     },
      isAdminOrLead:(req,res,next)=>{ // user kendi departmaninin lideri ise veya admin ise
-        if(req.isAdmin && (req.isLead && departmentId == req.user.departmentId)){
+        if(req.user.isAdmin && (req.user.isLead && departmentId == req.user.departmentId)){
             next()
         }else{
             res.errorStatusCode=403
@@ -29,7 +31,7 @@ module.exports = {
             
     },
     isAdminOrOwner:(req,res,next)=>{ // user kendi ise veya admin ise
-        if(req.isAdmin && (id=req.user._id)){
+        if(req.user.isAdmin && (id=req.user._id)){
             next()
         }else{
             res.errorStatusCode=403
