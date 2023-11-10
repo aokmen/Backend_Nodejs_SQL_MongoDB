@@ -15,8 +15,7 @@ app.use(express.json())  // app.use('/',express.json())
 // app.use(session({secret: process.env.SECRETKEY || 'write key  for session'}))
 
 
-//authentication
-app.use(require('./src/middlewares/authentication'))
+
 
 //env Variables
 const PORT = process.env.PORT || 8000
@@ -25,6 +24,9 @@ const HOST = process.env.HOST || '127.0.0.1'
 //DB Connection
 const {dbConnection} = require('./src/configs/dbConnection')
 dbConnection()
+const jwt=require('jsonwebtoken')
+//authentication
+app.use(require('./src/middlewares/authentication'))
 
 //Routes
 app.all('/',(req,res)=>{
