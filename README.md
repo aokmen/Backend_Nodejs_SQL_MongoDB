@@ -21,6 +21,8 @@ The primary objective of my project is to provide a robust solution for data man
 * Mongoose
 * MySQL
 * Postman
+* Swagger
+* Debug
 
 
 
