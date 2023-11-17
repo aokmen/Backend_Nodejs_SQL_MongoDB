@@ -22,7 +22,7 @@ The primary objective of my project is to provide a robust solution for data man
 * MySQL
 * Postman
 * Swagger
-* Debug
+
 
 
 
