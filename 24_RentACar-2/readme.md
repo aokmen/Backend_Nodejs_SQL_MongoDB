@@ -1,5 +1,61 @@
 # RENT A CAR API
 
+# JWT ile Token Farklar
+1-Token veri tabani üzerinde calisiyor. User in dogru tokeni kullanilip- madigini veri tabani üzerinden kontrol ediyor. JWT de icinde mevcut
+2-Klasik Token bir ömrü yok. Ama JWT de 30 dk 3 gün siniri var
+
+
+
+# 1.Adim
+Her User icin bir Token tablosuna ihtiyacimiz olacak, token olusturacagiz. Header da authorization ile alinan token ile user taninacak
+
+Token Model, Token Controller, Token Route
+Sync() ile get users, cars, reservations api kontrolu
+
+# 2.Adim
+1- auth controller ile login olusturma  >> user Model ve Token Model den veri aliniyor
+2- auth route
+3- auth controller ile logout olusturma 
+
+
+# Authentication ve Authorization
+
+# 3.Adim
+
+middleware > authentication.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### ERD:
 
 ![ERD](./erdRentACarAPI.png)

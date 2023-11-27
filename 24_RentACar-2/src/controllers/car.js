@@ -6,10 +6,11 @@
 
 const Car = require('../models/car')
 const Reservation = require('../models/reservation')
+
 module.exports = {
 
-    list: async(req,res) => {
-                /*
+    list: async (req, res) => {
+        /*
             #swagger.tags = ["Cars"]
             #swagger.summary = "List Cars"
             #swagger.description = `
@@ -34,12 +35,12 @@ module.exports = {
         // http://127.0.0.1:8000/cars?start=2023-10-13&end=2023-10-18
         const { start: getStartDate, end: getEndDate } = req.query
 
-         if (getStartDate && getEndDate) {
+        if (getStartDate && getEndDate) {
 
             const reservedCars = await Reservation.find({
-                $nor:[ //reserve edilmemis araclari verme
-                { startDate: { $gt: getEndDate } },// r.s>t.e
-                { endDate: { $lt: getStartDate } }, //reservesyon bitis tarihi müsterinin talep ettigi baslangic tarihinden kücük mü
+                $nor: [
+                    { startDate: { $gt: getEndDate } },
+                    { endDate: { $lt: getStartDate } },
                 ]
             }, { _id: 0, carId: 1 }).distinct('carId')
             // console.log(reservedCars)
@@ -65,7 +66,7 @@ module.exports = {
         const data = await res.getModelList(Car, filters)
 
         res.status(200).send({
-            result: "Success listed",
+            error: false,
             details: await res.getModelListDetails(Car, filters),
             data
         })
@@ -91,7 +92,7 @@ module.exports = {
         const data = await Car.create(req.body)
 
         res.status(201).send({
-            result: "Success created",
+            error: false,
             data
         })
     },
@@ -105,7 +106,7 @@ module.exports = {
         const data = await Car.findOne({ _id: req.params.id })
 
         res.status(200).send({
-            result: "Success read",
+            error: false,
             data
         })
     },
@@ -130,28 +131,29 @@ module.exports = {
         const data = await Car.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
         res.status(202).send({
-            result: "Success updated",
+            error: false,
             data,
             new: await Car.findOne({ _id: req.params.id })
         })
     },
 
-    delete: async(req,res) => {
-         /*
+    delete: async (req, res) => {
+        /*
             #swagger.tags = ["Cars"]
             #swagger.summary = "Delete Car"
         */
-        const data = await User.deleteOne({_id:req.params.id})
+
+        const data = await Car.deleteOne({ _id: req.params.id })
 
         // res.status(204).send({
-        //     result: "Success removed",
-        //     data,
+        //     error: false,
+        //     data
         // })
-        res.status(data.deletedCount ? 204 : 404).send({
-            result: "Success removed",
+
+        const statusCode = data.deletedCount ? 204 : 404
+        res.status(statusCode).send({
+            error: false,
             data
         })
-
     },
-
 }
