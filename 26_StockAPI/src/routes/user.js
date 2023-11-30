@@ -4,10 +4,17 @@
 ------------------------------------------------------- */
 const router = require('express').Router()
 /* ------------------------------------------------------- */
-const auth = require('../controllers/auth')
 
-router.post('/login',auth.login) 
-router.get('/logout',auth.logout)
+const user = require('../controllers/user')
 
+router.route('/')
+    .get(user.list) 
+    .post(user.create)
+
+router.route('/:id')
+    .get(user.read) 
+    .put(user.update)
+    .patch(user.update)
+    .delete(user.delete)
 
 module.exports=router
