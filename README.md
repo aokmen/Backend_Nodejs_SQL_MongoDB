@@ -1,4 +1,4 @@
-## Backend_Node.js_SQL_MongoDB Project Files
+## Backend: Express - MongoDB - Node.js - Mongoose - SQlite - NSQL Project Files
 
 <img alt="alt_text" src="./backend.png"/>
 
