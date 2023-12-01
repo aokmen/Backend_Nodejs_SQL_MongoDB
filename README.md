@@ -1,4 +1,6 @@
-## Backend_Node.js_SQL_MongoDB Project
+## Backend_Node.js_SQL_MongoDB Project Files
+
+<img alt="alt_text" src="./backend.png"/>
 
 ### Overview
 
