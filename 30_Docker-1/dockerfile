@@ -1,0 +1,16 @@
+# Altyapi (from dockerHub)
+FROM node:alpine3.18
+
+# Docker icinde app klasörü olustur
+WORKDIR /app
+
+# Dosyalari aktar COPY fromLocal toImage
+# COPY hello.js /app
+# . . ilk nokta icinde bulundugumuz tüm dosyalari al, ikinci nokta icinde bulundugum klasöre "/app" e kopyala
+COPY . . 
+
+# When image to container: 
+# docker run imagename >>> image i container dönüstür, yani sikistirilmis dosyalari cikar
+
+# CMD ile hello.js yi calistir
+CMD node hello.js
