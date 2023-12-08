@@ -1,0 +1,30 @@
+version: "1.5" # Optional
+
+services:
+
+    frontend:
+        # container_name: frontend # (default:key)
+        image: "docker-compose-frontend" # image_name
+        build: ./frontend # Dockerize edilecek klasör (dockerfile)
+        ports:
+            # dış/iç port numaraları
+            - 5173:5173
+            - 3000:5173
+            - 80:5173
+        restart: on-failure # hata anında tekrar çalıştır.
+        depends_on:
+            # önce aşağıdakileri çalıştır.
+            - backend # aşağıda tanımlandı.
+
+    backend:
+        # container_name: backend # (default:key)
+        image: "docker-compose-backend" # image_name
+        build: ./backend # Dockerize edilecek klasör (dockerfile)
+        ports:
+            # dış/iç port numaraları
+            - 8000:8000
+        restart: on-failure # hata anında tekrar çalıştır.
+        volumes:
+            # fiziksel yollar (external:internal)  >>> disaridaki log klasörü docker in icindeki log klasörü ile eslestiriyor ve kopyaliyor. Containerler down komutu ile kapandiginda loslar silinmiyor
+            - $PWD/backend/logs:/backend/logs 
+            - $PWD/backend/upload:/backend/upload
