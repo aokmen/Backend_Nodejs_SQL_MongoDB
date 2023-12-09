@@ -1,0 +1,25 @@
+
+FROM node:20.9.0-alpine3.18
+
+WORKDIR /frontend
+
+COPY . .
+
+RUN npm i -g pnpm
+RUN pnpm i
+CMD pnpm start
+EXPOSE 5173
+# normalde localhost 127.0.0.1 dir. Ama Docker icinde default localhost 0.0.0.0 dir
+
+# docker image prune -f -a >>> tüm image dosyalarini sil
+# docker container prune -f -a >>> tüm container dosyalarini sil
+# docker system prune -f -a >>> sistemdeki tüm container,image,cache dosyalarini sil
+
+# docker run backend
+# docker run -d -p 5173:5173 --name frontend3 frontend
+
+# --------------------------------
+# $ docker compose up # compose çalıştır.
+# $ docker compose up -d --build # compose daemon aç ve tekrar build et.
+# $ docker compose down # compose kapat.
+# $ docker compose down -v # compose tümünü kapat.
