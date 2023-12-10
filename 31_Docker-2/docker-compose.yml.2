@@ -1,0 +1,51 @@
+version: "3.9" # opsiyonel.
+
+services:
+
+    frontend:
+        # container_name: frontend # (default:key)
+        image: "docker-compose-frontend" # image_name
+        build: ./frontend # Dockerize edilecek klasör (dockerfile)
+        ports:
+            # dış/iç port numaraları
+            - 5173:5173
+            - 3000:5173
+            - 80:5173
+        restart: on-failure # hata anında tekrar çalıştır.
+        depends_on:
+            # önce aşağıdakileri çalıştır.
+            - backend # aşağıda tanımlandı.
+
+    backend:
+        # container_name: backend # (default:key)
+        image: "docker-compose-backend" # image_name
+        build: ./backend # Dockerize edilecek klasör (dockerfile)
+        ports:
+            # dış/iç port numaraları
+            - 8000:8000
+        restart: on-failure # hata anında tekrar çalıştır.
+        volumes:
+            # fiziksel yollar (external:internal)
+            - $PWD/backend/logs:/backend/logs
+            - $PWD/backend/upload:/backend/upload
+
+    #  MongoDB on Docker:
+    mongo:
+        image: mongo
+        ports:
+            - 27018:27017
+        restart: on-failure
+        volumes:
+            - $PWD/mongo27018:/data/db
+            
+    # MongoDB Management from Browser:
+    mongo-express:
+        image: mongo-express
+        ports:
+            - 8081:8081
+        environment:
+            - ME_CONFIG_MONGODB_SERVER=mongo
+            - ME_CONFIG_BASICAUTH_USERNAME=test
+            - ME_CONFIG_BASICAUTH_PASSWORD=test
+        depends_on:
+            - mongo
