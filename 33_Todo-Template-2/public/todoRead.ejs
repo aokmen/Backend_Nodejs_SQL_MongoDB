@@ -1,0 +1,41 @@
+<%- include('_header') %>
+
+        <div class="row">
+            <h1>TODO READ</h1>
+            <p>
+                <a class="btn btn-sm btn-secondary" href="/view">List Todos</a>
+                <a class="btn btn-sm btn-primary" href="/view/create">New Todo</a>
+            </p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th># <%= todo.id %></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Title</td>
+                        <td><%= todo.title %></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><%= todo.description %></td>
+                    </tr>
+                    <tr>
+                        <td><%= priority[todo.priority] %></td>
+                        <td>Norm</td>
+                    </tr>
+                    <tr>
+                        <td>Is Done?</td>
+                        <td><%= (todo.isDone ? 'yes' : 'No')%></td>
+                    </tr>
+                    <tr>
+                        <td>Created</td>
+                        <td><%= todo.createdAt.toLocaleDateString('de') %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+<%- include('_footer') %>

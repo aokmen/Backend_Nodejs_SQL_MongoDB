@@ -1,0 +1,57 @@
+<%- include('_header') %>
+        <div class="row">
+            <h1>TODO UPDATE</h1>
+            <p>
+                <a class="btn btn-sm btn-secondary" href="/view">List Todos</a>
+            </p>
+
+            <form action="" method="POST">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>#<%= todo.id %> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Priority</td>
+                            <td>
+                                <select class="form-select" name="priority">
+                                    <option value="1" <%= (todo.priority=='1' ? '' :'selected') %> >High</option>
+                                    <option value="0" <%= (todo.priority=='0' ? '' :'selected') %> selected>Norm</option>
+                                    <option value="-1" <%= (todo.priority=='-1' ? '' :'selected') %> >Low</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Title</td>
+                            <td><input type="text" name="title" required class="form-control" value="<%= todo.title %>"></td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>
+                                <textarea name="description" class="form-control"><%= todo.description %> </textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Is Done?</td>
+                            <td>
+                                <select class="form-select" name="isDone">
+                                    <option value="1" <%= (todo.isDone ? 'selected' :'') %> >Yes</option>
+                                    <option value="0" <%= (todo.isDone ? '' :'selected') %> selected>No</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Created</td>
+                            <td><%= todo.createdAt %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    <button class="btn btn-primary" type="submit">UPDATE</button>
+                </p>
+            </form>
+        </div>
+<%- include('_footer') %>
