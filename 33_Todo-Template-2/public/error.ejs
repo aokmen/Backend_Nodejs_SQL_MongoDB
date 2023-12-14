@@ -1,0 +1,14 @@
+<%- include('_header') %>
+
+        <div class="row">
+            <h1 class="text-danger">Opps! ERROR!</h1>
+            <h2>
+                <%= data.message %>
+            </h2>
+            <hr>
+            <pre><%= JSON.stringify(data, null, 4) %></pre>
+            <hr>
+            <p><button class="btn btn-secondary" onclick="history.back()">Back</button></p>
+        </div>
+        
+<%- include('_footer') %>
