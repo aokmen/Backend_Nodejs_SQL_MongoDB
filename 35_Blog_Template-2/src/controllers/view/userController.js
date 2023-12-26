@@ -2,7 +2,7 @@
 /* -------------------------------------------------------
     EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
-
+// This Express.js module manages user authentication processes, handling user login and logout. It uses the Mongoose ORM to interact with a MongoDB database, checks user credentials during login, sets up sessions and cookies, and redirects users based on successful or unsuccessful login attempts. The code emphasizes security measures such as error handling and strict mode for a robust user authentication system.
 // Catch async-errors and send to errorHandler:
 require('express-async-errors')
 
