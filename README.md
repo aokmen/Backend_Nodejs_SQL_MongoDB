@@ -13,7 +13,7 @@ I seamlessly integrate Node.js and Express.js with databases like SQL and MongoD
 ### Project Goals
 
 The primary objective of my project is to provide a robust solution for data management and business logic, catering to both developers and end-users. Leveraging the fast performance of Node.js and Express.js, combined with the data storage flexibility of SQL and MongoDB, results in a versatile architecture. The project has been designed with a strong focus on security and scalability considerations.
-
+ 
 ### Backend Tools:
 
 * Nodejs
