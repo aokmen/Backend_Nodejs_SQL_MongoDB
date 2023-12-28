@@ -8,7 +8,7 @@ This project is aimed at developing a robust and data-driven web application on 
 
 ### Technology Stack
 
-I seamlessly integrate Node.js and Express.js with databases like SQL and MongoDB to optimize data storage and management. The project encompasses crucial backend functions, including the creation of RESTful APIs, the implementation of security measures, session management, and more. Detailed information on route management and processing HTTP requests with Express.js is also provided.
+I seamlessly integrate Node.js and Express.js with databases like SQL and MongoDB to optimize data storage and management. The project encompasses crucial backend functions, including the creation of RESTful APIs, the implementation of security measures, session management, and more. Detailed information on route management and processing HTTP requests with Express.js is also provided. 
 
 ### Project Goals
 
