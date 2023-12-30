@@ -9,7 +9,7 @@ require('express-async-errors')
 const User = require('../../models/userModel')
 
 // ------------------------------------------
-// User
+// User 
 // ------------------------------------------
 module.exports.User = {
 
