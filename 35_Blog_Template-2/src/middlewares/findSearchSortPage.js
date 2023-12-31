@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
     // console.log(search)
     // https://www.mongodb.com/docs/manual/reference/operator/query/regex/
     for (let key in search) search[key] = { $regex: search[key], $options: 'i' } // i: case Insensitive
-    // console.log(search)
+    // console.log(search) 
 
     // FILTERING: URL?filter[key1]=value1&filter[key2]=value2
     const filter = req.query?.filter || {}
