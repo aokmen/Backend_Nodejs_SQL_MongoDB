@@ -14,7 +14,7 @@ const todo = require('../controllers/todo.view')
 // router.route('/create')
 // .get(todo.create)
 // .post(todo.create)
-
+ 
 // router.get('/:id',todo.read)
 // router.get('/:id/delete',todo.delete)
 
